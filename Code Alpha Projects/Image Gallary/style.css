@@ -1,0 +1,18 @@
+:root {
+    --maxResponsiveSize: 300px;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+#imgDiv {
+    /* column-count: 3; */
+    columns: var(--maxResponsiveSize);
+}
+#imgDiv > img {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+
+}
