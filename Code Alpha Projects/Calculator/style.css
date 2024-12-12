@@ -1,0 +1,175 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(60deg, #ffffff, rgb(151, 168, 215))
+}
+.design {
+
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: -5;
+}
+.design .box1, .design .box2 {
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+}
+.design .box1 {
+    background-color: rgb(150, 150, 255);
+    top: 50%;
+    right: -10%;
+}
+.design .box2 {
+    background-color: rgb(206, 255, 206);
+    top: -50%;
+    left: -10%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+#calculator {
+    background: linear-gradient(50deg, rgb(245, 248, 255), rgb(209, 209, 251));
+    width: max-content;
+    padding: 2rem 1.5rem;
+    border-radius: 3rem;
+    box-shadow: inset 5px 5px 7px white, inset -5px -5px 7px rgba(0, 0, 0, 0.2), 2px 2px 14px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#calculator #displays {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+    box-shadow: -5px -5px 7px rgba(0, 0, 0, 0.1), 5px 5px 5px rgb(255, 255, 255);
+    border-radius: 1rem;
+    padding: 1rem .5rem;
+    border: solid 1px rgb(240, 240, 240);
+    background: linear-gradient(80deg, whitesmoke, rgb(235, 238, 240));
+}
+ #calculator #displays input {
+    width: 100%;
+    height: 2rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 5px 20px;
+    font-size: 1rem;
+    color: #a8a8a8;
+}
+#calculator #displays input:nth-child(2){
+    color: darkgray;
+    text-align: right;
+    font-size: 2rem;
+}
+#calculator #buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+#calculator #buttons button{
+    height: 5rem;
+    width: 5rem;
+    font-size: 1.2rem;
+    color: rgb(136, 136, 137);
+    outline: none;
+    border: 10px solid rgb(245, 245, 248);
+    border-radius: 50%;
+    background-color: whitesmoke;
+    transition: all .1s ease-in-out;
+    box-shadow: -5px -5px 5px rgb(255, 255, 255, 0.7),
+                5px 5px 7px rgba(0, 0, 0, 0.1),
+                inset 2px 2px 5px white,
+                inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+#calculator #buttons button:hover{
+    background-color: rgb(245, 245, 248);
+    color: rgb(96, 96, 105);
+    box-shadow: -5px -5px 7px white,
+                5px 5px 7px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 5px white,
+                inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+#calculator #buttons button:active {
+    transition: all 0.2s ease-in-out;
+    background-color: rgb(240, 240, 240);
+    color: black;
+    box-shadow: 5px 5px 7px white,
+    -5px -5px 7px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px white,
+    inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#calculator #buttons .yellow {
+    background-color: hsl(45, 100%, 91%);
+    border: 10px solid hsl(45, 100%, 91%);
+}
+#calculator #buttons .yellow:hover {
+    background-color: hsl(45, 100%, 88%);
+}
+#calculator #buttons .yellow:active {
+    background-color: hsl(45, 100%, 85%);
+}
+
+#calculator #buttons .red {
+    background-color: hsl(0, 100%, 88%);
+    border: 10px solid hsl(0, 100%, 88%);
+}
+#calculator #buttons .red:hover {
+    background-color: hsl(0, 100%, 85%);
+}
+#calculator #buttons .red:active {
+    background-color: hsl(0, 100%, 83%);
+}
+
+#calculator #buttons .green {
+    background-color: hsl(91, 100%, 88%);
+    border: 10px solid hsl(91, 100%, 88%);
+}
+#calculator #buttons .green:hover {
+    background-color: hsl(91, 100%, 85%);
+}
+#calculator #buttons .green:active {
+    background-color: hsl(91, 100%, 83%);
+}
+
+#calculator #buttons .blue {
+    background-color: hsl(229, 100%, 90%);
+    border: 10px solid hsl(229, 100%, 90%);
+}
+#calculator #buttons .blue:hover {
+    background-color: hsl(229, 100%, 88%);
+}
+#calculator #buttons .blue:active {
+    background-color: hsl(229, 100%, 85%);
+}
+
+#calculator #buttons .orange {
+    background-color: hsl(34, 100%, 90%);
+    border: 10px solid hsl(34, 100%, 90%);
+}
+#calculator #buttons .orange:hover {
+    background-color: hsl(34, 100%, 88%);
+}
+#calculator #buttons .orange:active {
+    background-color: hsl(34, 100%, 85%);
+}
+
+@media screen and (max-width: 300px) {
+    #wrapper {
+        background: red;
+    }
+}
