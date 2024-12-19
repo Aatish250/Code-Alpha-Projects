@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Age Calculator</h1>
+        <form id="ageForm">
+            Set Current Date
+            <input type="date" id="today" value="2024-12-18">
+            <br>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required  value="2024-12-18">
+            <button type="submit">Calculate Age</button>
+        </form>
+        <span id="age">Enter your age</span>
+    </div>
+</body>
+<script>
+    document.getElementById("ageForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const today = new Date(document.getElementById("today").value);
+        const dob = new Date(document.getElementById("dob").value);
+
+        const year = today.getFullYear() - dob.getFullYear();
+        const month = today.getMonth() - dob.getMonth();
+        const day = today.getDate() - dob.getDate();
+        console.log("Initial: ",year, month, day);
+        console.log(calc(year, month, day));
+    });
+
+function calc(year, month, day){
+    message = ""
+    if (year < 0 ) {
+        return "Invalid date of birth";
+    } else {
+    // if (year >= 0) {    
+        if(day < 0){ 
+            month--;
+            day += new Date(year, month + 1, 0).getDate();
+            calc(year, month, day);
+        }
+        if(month < 0){
+            year--;
+            month += 12;
+            calc(year, month, day);
+        }
+        message = "year: " + year + " month: " + month + " day: " + day;
+    }
+    return message;
+}
+
+</script>
+</html>
