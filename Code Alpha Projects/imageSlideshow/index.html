@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Gallery</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            padding: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            background-color: #f4f4f4;
+
+        }
+
+        .gallery-container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            width: 80%;
+
+            max-width: 800px;
+
+        }
+
+        .image-viewer {
+
+            width: 100%;
+
+            height: 500px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            background-color: #000;
+
+            position: relative;
+
+        }
+
+        .image-viewer img {
+
+            max-width: 100%;
+
+            max-height: 100%;
+
+        }
+
+        .controls {
+
+            position: absolute;
+
+            top: 50%;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            transform: translateY(-50%);
+
+        }
+
+        .controls button {
+
+            background-color: rgba(255, 255, 255, 0.7);
+
+            border: none;
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            border-radius: 50%;
+
+            transition: background-color 0.3s;
+
+        }
+
+        .controls button:hover {
+
+            background-color: rgba(255, 255, 255, 1);
+
+        }
+
+        .thumbnail-container {
+
+            display: flex;
+
+            overflow-x: auto;
+
+            gap: 10px;
+
+        }
+
+        .thumbnail-container img {
+
+            height: 100px;
+
+            cursor: pointer;
+
+            border: 2px solid transparent;
+
+            transition: transform 0.3s, border-color 0.3s;
+
+        }
+
+        .thumbnail-container img:hover {
+
+            transform: scale(1.1);
+
+        }
+
+        .thumbnail-container img.active {
+
+            border-color: #007BFF;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="gallery-container">
+
+    <div class="image-viewer">
+
+        <img id="main-image" src="https://via.placeholder.com/800x500" alt="Main Image">
+
+        <div class="controls">
+
+            <button id="prev">&#10094;</button>
+
+            <button id="next">&#10095;</button>
+
+        </div>
+
+    </div>
+
+    <div class="thumbnail-container">
+
+        <img src="https://picsum.photos/800/500" alt="Thumbnail 1" data-index="0" class="active">
+
+        <img src="https://picsum.photos/801/500" alt="Thumbnail 2" data-index="1">
+
+        <img src="https://picsum.photos/802/500" alt="Thumbnail 3" data-index="2">
+
+        <img src="https://picsum.photos/803/500" alt="Thumbnail 4" data-index="3">
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    const thumbnails = document.querySelectorAll('.thumbnail-container img');
+
+    const mainImage = document.getElementById('main-image');
+
+    const prevButton = document.getElementById('prev');
+
+    const nextButton = document.getElementById('next');
+
+
+
+    let currentIndex = 0;
+
+
+
+    function updateMainImage(index) {
+
+        thumbnails.forEach(img => img.classList.remove('active'));
+
+        thumbnails[index].classList.add('active');
+
+        mainImage.src = thumbnails[index].src;
+
+        currentIndex = index;
+
+    }
+
+
+
+    thumbnails.forEach((thumbnail, index) => {
+
+        thumbnail.addEventListener('click', () => updateMainImage(index));
+
+    });
+
+
+
+    prevButton.addEventListener('click', () => {
+
+        const newIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+
+        updateMainImage(newIndex);
+
+    });
+
+
+
+    nextButton.addEventListener('click', () => {
+
+        const newIndex = (currentIndex + 1) % thumbnails.length;
+
+        updateMainImage(newIndex);
+
+    });
+
+</script>
+
+
+
+</body>
+
+</html>
